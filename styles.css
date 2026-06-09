@@ -1,0 +1,29 @@
+body{
+    background-color: #dfaae4;
+}
+
+nav{
+    background-color: #a8a3d6;
+}
+
+h1{
+    color: rgb(138, 36, 66);
+    font-family: 'roboto', sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+div{
+    background-color: #d4a0b6;
+    color: white;
+    border-radius: 70px;
+    padding: 70px;
+    margin: 70px;
+}
+
+form{
+    background-color: #161e4b;
+    color: white;
+    border-radius: 70px;
+    padding: 70px;
+    margin: 70px;
+}
