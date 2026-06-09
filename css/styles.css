@@ -1,0 +1,117 @@
+:root {
+    --color-azul-oscuro: #002147;
+    --color-rosa-claro: #FAD5E0;
+    --color-rosa-pastel: #D5A1AF;
+    --color-rosa-ajolote: #E65C84;
+
+    --color-tarjeta: #f4f4ff92;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, var(--color-rosa-pastel), var(--color-azul-oscuro));
+}
+
+nav {
+    background-color: var(--color-rosa-claro);
+}
+
+h1,
+h2,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    color: var(--color-azul-oscuro);
+    font-weight: 700;
+}
+
+h2,
+h5,
+h6 {
+    color: white;
+}
+
+
+.text-logo:hover {
+    animation: aparecer 1s ease-in-out infinite alternate;
+    text-align: center;
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    background-color: var(--color-tarjeta);
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+}
+
+.card-person {
+    scale: 1;
+    transition: scale 0.4s;
+}
+
+.card-person:hover {
+    scale: 1.1;
+    transition: scale 0.4s;
+}
+
+.card-title {
+    color: var(--color-azul-oscuro);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+.card-text {
+    color: var(--color-rosa-ajolote);
+    font-weight: 500;
+}
+
+.card-link {
+    color: var(--color-azul-oscuro);
+}
+
+.list-group-item {
+    border-color: #56565680;
+}
+
+footer {
+    background-color: var(--color-azul-oscuro);
+
+}
+
+footer h6 {
+    font-weight: bold;
+}
+
+
+.btn-primary:active {
+    background-color: var(--color-rosa-claro) !important;
+    color: var(--color-azul-oscuro) !important;
+}
+
+.btn-primary {
+    scale: 1;
+    transition: scale 0.2s;
+    color: white;
+    background-color: var(--color-azul-oscuro);
+    border: none;
+}
+
+.btn-primary:hover {
+    color: var(--color-azul-oscuro);
+    background-color: var(--color-rosa-ajolote);
+    scale: 1.1;
+    transition: scale 0.2s;
+}
