@@ -1,14 +1,15 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // 1.EmailJS Public Key
     emailjs.init({
-      publicKey: "-KQzjIoCFvFUpywgm", 
+        publicKey: "-KQzjIoCFvFUpywgm",
     });
 
     const formulario = document.getElementById('contactForm');
-    
+    const inputTelefono = document.getElementById("telefono");
+
     if (formulario) {
-        formulario.addEventListener('submit', function(event) {
-            event.preventDefault(); 
+        formulario.addEventListener('submit', function (event) {
+            event.preventDefault();
 
             const nombre = document.getElementById('nombre').value.trim();
             const correo = document.getElementById('correo').value.trim();
@@ -16,11 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const mensaje = document.getElementById('mensaje').value.trim();
 
             const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const regexTelefono = /^[0-9]{10}$/; 
+            const regexTelefono = /^[0-9]{10}$/;
 
             if (nombre === '' || correo === '' || telefono === '' || mensaje === '') {
                 mostrarAlerta('Por favor, completa todos los campos requeridos.', 'danger');
-                return; 
+                return;
             }
 
             if (!regexCorreo.test(correo)) {
@@ -36,6 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
             mostrarAlerta('Enviando mensaje...', 'info');
             enviarCorreo(nombre, correo, telefono, mensaje);
         });
+    }
+
+    if (inputTelefono) {
+        inputTelefono.addEventListener("keypress", event => {
+            if(event.key === " " || isNaN(event.key))
+                event.preventDefault();
+        })
     }
 });
 
@@ -62,11 +70,11 @@ function enviarCorreo(nombre, correo, telefono, mensaje) {
     const templateID = "template_t6azsoa";
 
     emailjs.send(serviceID, templateID, templateParams)
-        .then(function(response) {
+        .then(function (response) {
             console.log('Éxito!', response.status, response.text);
             mostrarAlerta('¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.', 'success');
             document.getElementById('contactForm').reset();
-        }, function(error) {
+        }, function (error) {
             console.log('Fallo...', error);
             mostrarAlerta('Hubo un error al enviar el mensaje. Intenta nuevamente.', 'danger');
         });
