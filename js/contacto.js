@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (inputTelefono) {
         inputTelefono.addEventListener("keypress", event => {
-            if(event.key === " " || isNaN(event.key))
+            if (event.key === " " || isNaN(event.key))
                 event.preventDefault();
         })
     }
