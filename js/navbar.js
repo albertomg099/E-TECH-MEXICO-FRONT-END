@@ -14,7 +14,7 @@ export function addNavbar() {
         <div class="navbar-links d-flex flex-wrap gap-2 gap-md-3 justify-content-center align-items-center">
             <a class="btn btn-nav" href="/" role="button">Inicio</a>
             <a class="btn btn-nav" href="nosotros.html" role="button">Nosotros</a>
-            <a class="btn btn-nav" href="" role="button">Catalago</a>
+            <a class="btn btn-nav" href="catalogo.html" role="button">Catalago</a>
             <a class="btn btn-nav" href="contacto.html" role="button">Contacto</a>
             <a class="btn btn-nav" href="#" role="button">Login</a>
         </div>
