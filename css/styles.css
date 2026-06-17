@@ -310,7 +310,7 @@ footer h6 {
     width: 100%;
     max-width: 580px; 
     box-sizing: border-box;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra sutil opcional */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
 }
 
 .social-title {
@@ -334,4 +334,53 @@ footer h6 {
 
 .social-icon-img:hover {
     transform: scale(1.2); 
+}
+
+/* --- FOOTER --- */ 
+.footer-custom {
+    background-color: #2b2d42; 
+    color: #ffffff;
+}
+
+.footer-logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.footer-img-brand {
+    max-width: 100px; 
+    height: auto;
+}
+
+.footer-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    position: relative;
+    color: #ffffff;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #cbd5e1; 
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+
+.footer-links a:hover {
+    color: var(--color-rosa-ajolote, #ff69b4); 
+}
+
+.footer-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright-text {
+    font-size: 0.85rem;
+    color: #94a3b8;
 }
