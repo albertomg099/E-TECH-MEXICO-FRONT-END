@@ -81,7 +81,7 @@ h5 {
     max-width: none;
 
     box-sizing: border-box;
-    background-image: url(../assets/images/about/banner.jpg);
+    background-image: url(../assets/images/laptop-dos.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -127,4 +127,36 @@ footer h6 {
     padding: 0;
     margin: 0;
     text-align: center;
+}
+
+/* ------------------------------------------ */
+
+/* Asegura que todas las imágenes mantengan la misma proporción sin deformarse */
+.img-container {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa; /* Un fondo gris sutil para destacar el producto */
+}
+
+.img-container img {
+    max-height: 100%;
+    object-fit: contain; /* Evita que la consola se estire feo */
+}
+
+/* Efecto hover suave para que la tarjeta resalte cuando pases el mouse */
+.custom-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Ajuste de color del botón si quieres que combine con el menú superior */
+.custom-btn {
+    background-color: #0b1c3f; /* Cambia al tono oscuro o rosa de tu navbar */
+    border: none;
 }
