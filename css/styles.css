@@ -84,6 +84,7 @@ h5 {
     background-image: url(../assets/images/laptop-dos.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
 }
 
 .bg-pink-light {
@@ -129,23 +130,19 @@ footer h6 {
     text-align: center;
 }
 
-/* ------------------------------------------ */
-
-/* Asegura que todas las imágenes mantengan la misma proporción sin deformarse */
 .img-container {
     height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f8f9fa; /* Un fondo gris sutil para destacar el producto */
+    background-color: #f8f9fa; 
 }
 
 .img-container img {
     max-height: 100%;
-    object-fit: contain; /* Evita que la consola se estire feo */
+    object-fit: contain; 
 }
 
-/* Efecto hover suave para que la tarjeta resalte cuando pases el mouse */
 .custom-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -155,8 +152,63 @@ footer h6 {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12) !important;
 }
 
-/* Ajuste de color del botón si quieres que combine con el menú superior */
 .custom-btn {
-    background-color: #0b1c3f; /* Cambia al tono oscuro o rosa de tu navbar */
+    background-color: #0b1c3f; 
     border: none;
 }
+
+/* Contenedor "¡Envios Ya!" */
+.shipping-banner {
+    width: 100%;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff; 
+}
+
+
+.shipping-container {
+    background-color: #e5e5e5; 
+    border-radius: 12px;       
+    width: 100%;
+    max-width: 900px;          
+    display: flex;
+    align-items: center;       
+    justify-content: space-between;
+    padding: 40px 50px;       
+    box-sizing: border-box;
+}
+
+.shipping-text {
+    flex: 1;
+    padding-right: 30px;       
+}
+
+.shipping-text h2 {
+    color: var(--color-azul-oscuro); 
+    font-size: 2.5rem;              
+    font-weight: bold;
+    margin-bottom: 15px;             
+    line-height: 1.2;
+}
+
+.shipping-text p {
+    color: var(--color-azul-oscuro);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.shipping-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.shipping-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;      
+    object-fit: cover;
+}
+
