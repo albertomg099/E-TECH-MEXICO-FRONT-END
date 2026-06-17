@@ -125,13 +125,39 @@ const productosMock = [
         price: 59.50,
         description: "Lampara decorativa para cuarto habitación",
         category: "Gadgets",
+        image: "https://images.unsplash.com/photo-1574882225022-5f45b99d4966?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         rating: {
             rate: 4.2,
             count: 10
         }
     }
 ]
-console.log("hola mundo")
 
-
+document.addEventListener("DOMContentLoaded", () => {
+    const productosContainer = document.getElementById("productos-container");
+    productosMock.forEach(producto => {
+        const productoCard = document.createElement("div");
+        productoCard.classList.add("col");
+        productoCard.innerHTML = `
+                        <div class="card h-100 border-0 shadow-sm custom-card">
+                            <div class="img-container">
+                                <img src="${producto.image}" class="card-img-top p-3 rounded"
+                                    alt="${producto.title}">
+                            </div>
+                            <div class="card-body d-flex flex-column text-center">
+                                <h5 class="card-title fw-bold text-dark mb-2">${producto.title}</h5>
+                                <p class="card-text text-muted small flex-grow-1">${producto.description}</p>
+                                <div class="mt-3">
+                                    <span class="d-block mb-2 fs-5 fw-bold text-dark">$${producto.price.toFixed(2)} MXN</span>
+                                    <a href="#"
+                                        class="btn btn-dark w-100 rounded-pill fw-semibold shadow-sm custom-btn">Agregar
+                                        al
+                                        carrito</a>
+                                </div>
+                            </div>
+                        </div>
+        `;
+        productosContainer.appendChild(productoCard);
+    });
+});
 
