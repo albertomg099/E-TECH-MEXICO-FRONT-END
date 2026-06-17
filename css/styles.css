@@ -236,3 +236,28 @@ footer h6 {
     bottom: 0;
     right: 0;
 }
+
+.subscription-card {
+    border: 2px solid var(--color-azul-oscuro);
+    background-color: #ffffff;
+    border-radius: 100px; 
+    padding: 20px 50px;
+    width: 100%;
+    max-width: 850px; 
+    box-sizing: border-box;
+}
+
+.subscription-card-text p {
+    color: var(--color-azul-oscuro);
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.subscription-card-text p strong {
+    font-weight: bold;
+}
+
+.subscription-card-icon img {
+    max-width: 85px; 
+    height: auto;
+}
