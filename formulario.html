@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Agregar Producto - E-TECH MÉXICO</title>
+    <title>Agregar Producto  E-TECH MÉXICO</title>
 </head>
 
 <body>
@@ -137,7 +137,7 @@
     <script>
         const STORAGE_KEY = 'etech_productos';
 
-        // --- Vista previa de imagen ---
+        // Vista previa de image
         document.getElementById('urlImagen').addEventListener('input', function () {
             const url = this.value.trim();
             const preview = document.getElementById('imagenPreview');
@@ -151,7 +151,7 @@
             }
         });
 
-        // --- Limpiar formulario ---
+        // Limpiar formularios
         document.getElementById('btnLimpiar').addEventListener('click', () => {
             document.getElementById('productoForm').reset();
             document.getElementById('previewContainer').style.display = 'none';
@@ -159,7 +159,7 @@
             document.getElementById('productoForm').classList.remove('was-validated');
         });
 
-        // --- Guardar producto en localStorage ---
+        // Guardar producto en localStorage 
         document.getElementById('productoForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const form = e.target;
@@ -175,7 +175,7 @@
 
             // Crear nuevo producto con el mismo formato que productosMock
             const nuevoProducto = {
-                id: Date.now(), // ID único basado en timestamp
+                id: Date.now(), // ID único basaado en timestamp
                 title: document.getElementById('nombreProducto').value.trim(),
                 description: document.getElementById('descripcion').value.trim(),
                 price: parseFloat(document.getElementById('precio').value),
@@ -201,7 +201,7 @@
             renderListaGuardados();
         });
 
-        // --- Borrar todos los productos del localStorage ---
+        // Borrar  todos los productos del localStorage 
         document.getElementById('btnBorrarTodos').addEventListener('click', () => {
             if (confirm('¿Seguro que quieres borrar todos los productos agregados?')) {
                 localStorage.removeItem(STORAGE_KEY);
@@ -209,7 +209,7 @@
             }
         });
 
-        // --- Mostrar lista de productos guardados ---
+        // Mostrar listaa de productos guardados 
         function renderListaGuardados() {
             const productos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
             const section = document.getElementById('productosGuardadosSection');
@@ -237,7 +237,7 @@
             `).join('');
         }
 
-        // --- Eliminar producto individual ---
+        //  Eliminar producto individual 
         function eliminarProducto(id) {
             const productos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
             const filtrados = productos.filter(p => p.id !== id);
