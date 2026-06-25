@@ -4,48 +4,76 @@ document.addEventListener('DOMContentLoaded', function () {
         publicKey: "-KQzjIoCFvFUpywgm",
     });
 
-    const formulario = document.getElementById('contactForm');
-    const inputTelefono = document.getElementById("telefono");
+    document.getElementById('contactForm').addEventListener("submit", (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const feedbackMessageRequired = "Campo obligatorio";
 
-    if (formulario) {
-        formulario.addEventListener('submit', function (event) {
-            event.preventDefault();
+        //Validar nombre
+        const inputNombre = document.getElementById("inputNombre");
+        const inputNombreValue = inputNombre.value.trim();
+        const inputNombreFeedback = document.getElementById("invalidFeedbackNombre");
 
-            const nombre = document.getElementById('nombre').value.trim();
-            const correo = document.getElementById('correo').value.trim();
-            const telefono = document.getElementById('telefono').value.trim();
-            const mensaje = document.getElementById('mensaje').value.trim();
+        if (inputNombreValue.length < 3) {
+            const feedbackMessage = "El nombre debe ser de al menos de 3 caracteres de longitud.";
+            inputNombre.setCustomValidity(feedbackMessage)
+            inputNombreFeedback.textContent = feedbackMessage;
+        } else {
+            inputNombre.setCustomValidity("");
+        }
 
-            const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const regexTelefono = /^[0-9]{10}$/;
+        //Validaar correo
+        const inputCorreo = document.getElementById("inputCorreo");
+        const inputCorreoValue = inputCorreo.value.trim();
+        const inputCorreoFeedback = document.getElementById("invalidFeedbackCorreo");
+        const regexCorreo = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-            if (nombre === '' || correo === '' || telefono === '' || mensaje === '') {
-                mostrarAlerta('Por favor, completa todos los campos requeridos.', 'danger');
-                return;
+        if (inputCorreoValue.length === 0) {
+            inputCorreo.setCustomValidity(feedbackMessageRequired)
+            inputCorreoFeedback.textContent = feedbackMessageRequired;
+            inputCorreo.setCustomValidity(feedbackMessageRequired);
+        } else {
+            if (!regexCorreo.test(inputCorreoValue)) {
+                const feedbackMessage = "Ingresa un correo válido (Ejemplo: correo@dominio.com)."
+                inputCorreoFeedback.textContent = feedbackMessage;
+                inputCorreo.setCustomValidity(feedbackMessage);
+            } else {
+                inputCorreo.setCustomValidity("");
             }
+        }
 
-            if (!regexCorreo.test(correo)) {
-                mostrarAlerta('El formato del correo electrónico no es válido.', 'warning');
-                return;
+        //Validaar telefono
+        const inputTelefono = document.getElementById("inputTelefono");
+        const inputTelefonoValue = inputTelefono.value.trim();
+        const inputTelefonoFeedback = document.getElementById("invalidFeedbackTelefono");
+        const regexTelefono = /^[0-9]{10}$/;
+
+        if (inputTelefonoValue.length === 0) {
+            inputTelefono.setCustomValidity(feedbackMessageRequired)
+            inputTelefonoFeedback.textContent = feedbackMessageRequired;
+            inputTelefono.setCustomValidity(feedbackMessageRequired);
+        } else {
+            if (!regexTelefono.test(inputTelefonoValue)) {
+                const feedbackMessage = "Ingresa un número telefónico válido, debe contener al menos 10 dígitos."
+                inputTelefonoFeedback.textContent = feedbackMessage;
+                inputTelefono.setCustomValidity(feedbackMessage);
+            } else {
+                inputTelefono.setCustomValidity("");
             }
+        }
 
-            if (!regexTelefono.test(telefono)) {
-                mostrarAlerta('El número de teléfono debe contener exactamente 10 dígitos.', 'warning');
-                return;
-            }
+        if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            mostrarAlerta("Favor de revisar que todos los campos estén registrados correctamente.", "danger");
+            return;
+        }
 
-            mostrarAlerta('Enviando mensaje...', 'info');
-            enviarCorreo(nombre, correo, telefono, mensaje);
-        });
-    }
-
-    if (inputTelefono) {
-        inputTelefono.addEventListener("keypress", event => {
-            if (event.key === " " || isNaN(event.key))
-                event.preventDefault();
-        })
-    }
+        mostrarAlerta('Enviando mensaje...', 'info');
+        enviarCorreo(nombre, correo, telefono, mensaje);
+    })
 });
+
+
 
 function mostrarAlerta(mensaje, tipo) {
     const contenedorAlerta = document.getElementById('formAlert');

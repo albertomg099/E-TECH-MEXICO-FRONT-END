@@ -11,9 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputConfirmPassword = document.getElementById("confirmPassword");
     const contenedorAlerta = document.getElementById("formAlerta");
 
-    
-
-
     if (formulario) {
 
         formulario.reset();
@@ -37,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let formularioValido = true;
 
             // VALIDACIONES
-            
+
             // NOMBRE (Validación del nombre.)
             const nombreValor = inputNombre.value.trim();
             const regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,60}$/;
@@ -83,12 +80,24 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 formulario.classList.remove("was-validated");
 
-                contenedorAlerta.innerHTML = `
-                    <div class="alert alert-success m-0" role="alert">
-                        <strong>¡Validación exitosa!</strong> Transfiriendo datos al módulo JSON...
-                    </div>`;
+                const usuario = {
+                    nombre: inputNombre.value.trim(),
+                    telefono: inputTelefono.value.trim(),
+                    email: inputEmail.value.trim(),
+                    password: inputPassword.value.trim()
+                };
 
-                console.log("Validación correcta de Front-End. Listo para que Josué genere el JSON.");
+                //Mostrar alerta de registro correcto
+                //TODO agregar alerta de que usuario no pudo registrarse cuando se implemente el backend
+                Swal.fire({
+                    title: 'Usuario registrado',
+                    text: 'Usuario registrado correctamente',
+                    icon: 'success',
+                    confirmButtonText: 'Ok',
+                    customClass: {
+                        confirmButton: 'swtalert-confirm-btn'
+                    }
+                })
             }// Evaluación final.
         });// Función Flecha Submit.
 
