@@ -16,7 +16,7 @@ document.getElementById('contactForm').addEventListener("submit", (event) => {
     const inputNombreFeedback = document.getElementById("invalidFeedbackNombre");
 
     if(inputNombreValue.length < 3){
-        const feedbackMessage = "El nombre de usuario debe ser de al menos de 3 caracteres de longitud.";
+        const feedbackMessage = "El nombre debe ser de al menos de 3 caracteres de longitud.";
         inputNombre.setCustomValidity(feedbackMessage)
         inputNombreFeedback.textContent = feedbackMessage;
     }else {
@@ -35,7 +35,7 @@ document.getElementById('contactForm').addEventListener("submit", (event) => {
         inputCorreo.setCustomValidity(feedbackMessageRequired);
     }else {
         if(!regexCorreo.test(inputCorreoValue)){
-            const feedbackMessage = "Favor de ingresa un correo válido. (Ej: kevin@ejemplo.com)"
+            const feedbackMessage = "Ingresa un correo válido (Ejemplo: correo@dominio.com)."
             inputCorreoFeedback.textContent = feedbackMessage;
             inputCorreo.setCustomValidity(feedbackMessage);
         } else {
@@ -55,7 +55,7 @@ document.getElementById('contactForm').addEventListener("submit", (event) => {
         inputTelefono.setCustomValidity(feedbackMessageRequired);
     } else {
         if (!regexTelefono.test(inputTelefonoValue)) {
-            const feedbackMessage = "Ingresa un número de telefono válido de 10 digitos (Ej; 5598326742)"
+            const feedbackMessage = "Ingresa un número telefónico válido, debe contener al menos 10 dígitos."
             inputTelefonoFeedback.textContent = feedbackMessage;
             inputTelefono.setCustomValidity(feedbackMessage);
         } else {
