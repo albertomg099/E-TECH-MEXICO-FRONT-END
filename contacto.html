@@ -34,29 +34,33 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-6 col-md-7 col-sm-10">
                         <!-- Formulario -->
-                        <form id="contactForm" class="contact-form card p-4 shadow bg-opacity-50">
+                        <form id="contactForm" class="contact-form card p-4 shadow bg-opacity-50" novalidate>
 
                             <div class="form-group mb-3">
                                 <label for="nombre" class="form-label fw-bold">Nombre Completo</label>
-                                <input type="text" id="nombre" class="form-control" placeholder="Ej. Kevin Salgado"
+                                <input type="text" id="inputNombre" class="form-control" placeholder="Ej. Kevin Salgado"
                                     required>
+                                <div id="invalidFeedbackNombre" class="invalid-feedback"></div>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="correo" class="form-label fw-bold">Correo Electrónico</label>
-                                <input type="email" id="correo" class="form-control" placeholder="kevin@ejemplo.com"
-                                    required>
+                                <input id="inputCorreo" class="form-control" placeholder="kevin@ejemplo.com" required>
+                                <div id="invalidFeedbackCorreo" class="invalid-feedback"></div>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="telefono" class="form-label fw-bold">Teléfono (10 dígitos)</label>
-                                <input type="tel" id="telefono" class="form-control" placeholder="5512345678" required>
+                                <input type="tel" id="inputTelefono" class="form-control" placeholder="5512345678"
+                                    required>
+                                <div id="invalidFeedbackTelefono" class="invalid-feedback"></div>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="mensaje" class="form-label fw-bold">Mensaje</label>
                                 <textarea id="mensaje" class="form-control" rows="5"
                                     placeholder="Escribe tu consulta aquí..." required></textarea>
+                                <div id="invalidFeedbackTelefono" class="invalid-feedback">Campo obligatorio</div>
                             </div>
 
                             <!-- Contenedor para la alerta -->
