@@ -15,16 +15,14 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-
+    <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.min.css " rel="stylesheet">
     <title>Registro de Usuarios | E-TECH MÉXICO</title>
 </head>
 
 <body>
 
-
     <body>
         <nav></nav>
-
         <main class="p-4">
             <section class="row justify-content-center">
                 <header class="text-center m-4">
@@ -41,14 +39,14 @@
                                 <!-- Nombre -->
                                 <div class="form-group mb-3">
                                     <label for="nombreUsuario" class="form-label fw-bold">Nombre Completo</label>
-                                    <input type="text" id="nombreUsuario" class="form-control"
+                                    <input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control"
                                         placeholder="Ej. Juan Pérez" required>
                                     <div class="invalid-feedback">Por favor ingresa el nombre completo.</div>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="telefono" class="form-label fw-bold">Número de Teléfono</label>
-                                    <input type="tel" id="telefono" class="form-control" placeholder="5512345678"
+                                    <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="5512345678"
                                         required>
                                     <div class="invalid-feedback">
                                         Ingresa un número telefónico válido, debe contener al menos 10 dígitos.
@@ -57,7 +55,7 @@
 
                                 <div class="form-group mb-3">
                                     <label for="email" class="form-label fw-bold">Correo Electrónico</label>
-                                    <input type="email" id="email" class="form-control" placeholder="ejemplo@correo.com"
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="ejemplo@correo.com"
                                         required>
                                     <div class="invalid-feedback">
                                         Ingresa un correo válido (Ejemplo: correo@dominio.com).
@@ -66,7 +64,7 @@
 
                                 <div class="form-group mb-3">
                                     <label for="password" class="form-label fw-bold">Contraseña</label>
-                                    <input type="password" id="password" class="form-control" placeholder="********"
+                                    <input type="password" id="password" name="password" class="form-control" placeholder="********"
                                         required>
                                     <div class="invalid-feedback">
                                         La contraseña debe tener al menos 8 caracteres.
@@ -77,7 +75,7 @@
                                     <label for="confirmPassword" class="form-label fw-bold">
                                         Confirmar Contraseña
                                     </label>
-                                    <input type="password" id="confirmPassword" class="form-control"
+                                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
                                         placeholder="********" required>
                                     <div class="invalid-feedback">
                                         Las contraseñas no coinciden.
@@ -85,7 +83,7 @@
                                 </div>
                                 <div id="formAlerta" class="mb-3"></div>
 
-          
+
                                 <div class="d-flex gap-2">
                                     <button type="reset" class="btn btn-outline-secondary w-50 fw-bold">
                                         Limpiar
@@ -113,6 +111,7 @@
 
         <script src="./js/main.js" type="module"></script>
         <script src="./js/registro-validacion-usuario.js" type="module"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.all.min.js "></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
             crossorigin="anonymous"></script>
