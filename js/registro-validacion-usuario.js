@@ -108,4 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }// if (Formulario)
 
+    inputTelefono.addEventListener("keypress", () => {
+        if (event.key === " " || isNaN(event.key))
+            event.preventDefault();
+    })
+
 });// Función flecha DOMContentLoaded.

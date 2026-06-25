@@ -71,6 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
         mostrarAlerta('Enviando mensaje...', 'info');
         enviarCorreo(nombre, correo, telefono, mensaje);
     })
+
+    document.getElementById("inputTelefono").addEventListener("keypress", (event) => {
+        if (event.key === " " || isNaN(event.key))
+            event.preventDefault();
+    })
 });
 
 
