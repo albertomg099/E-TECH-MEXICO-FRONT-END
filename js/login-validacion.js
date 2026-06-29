@@ -57,9 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>`;
             } else {
                 formulario.classList.remove("was-validated");
+
+                const credencialesUsuario = {
+                    "email": emailValor,
+                    "password": passwordValor
+                };
+
+                console.log("¡JSON de credenciales creado con éxito por Alberto!");
+                console.log(JSON.stringify(credencialesUsuario, null, 2));
                 
                 // Simulación exitosa (Aquí se conectará con el Backend posteriormente)
-                console.log("Datos listos para enviar:", { email: emailValor, password: passwordValor });
+                // console.log("Datos listos para enviar:", { email: emailValor, password: passwordValor });
             }
         });
 
