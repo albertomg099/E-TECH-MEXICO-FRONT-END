@@ -26,8 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     ];
 
-    console.log(JSON.stringify(usuariosDePrueba, null, 2));
-
+    // console.log(JSON.stringify(usuariosDePrueba, null, 2));
     if (formulario) {
 
         formulario.reset();
@@ -81,8 +80,46 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 formulario.classList.remove("was-validated");
 
-                // Simulación exitosa (Aquí se conectará con el Backend posteriormente)
-                console.log("Datos listos para enviar:", { email: emailValor, password: passwordValor });
+                //Encontrar usuario
+                let usuarioLogin = undefined;
+                usuariosDePrueba.forEach((usuario) => {
+                    if (emailValor === usuario.email)
+                        usuarioLogin = usuario;
+                });
+
+                //Validar usuario
+                if (!usuarioLogin) {
+                    Swal.fire({
+                        title: 'Error de inicio sesión',
+                        text: 'Correo electrónico incorrecto',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                        customClass: {
+                            confirmButton: 'swtalert-confirm-btn'
+                        }
+                    });
+                } else {
+                    //Validar contraseña
+                    if (passwordValor === usuarioLogin.password) {
+                        window.location.replace("/");
+                    } else {
+                        Swal.fire({
+                            title: 'Error de inicio sesión',
+                            text: 'Contraseña incorrecta',
+                            icon: 'error',
+                            confirmButtonText: 'Ok',
+                            customClass: {
+                                confirmButton: 'swtalert-confirm-btn'
+                            }
+                        });
+                    }
+
+                }
+
+
+
+
+
             }
         });
 
