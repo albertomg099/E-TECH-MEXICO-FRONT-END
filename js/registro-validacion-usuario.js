@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Selección del fromulario.
+    // Selección del formulario.
     const formulario = document.getElementById("usuarioForm");
 
     // Selección de los inputs de validacion.
@@ -33,44 +33,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let formularioValido = true;
 
-            // VALIDACIONES
+            // ==========================================
+            // VALIDACIONES DINÁMICAS
+            // ==========================================
 
-            // NOMBRE (Validación del nombre.)
+            // NOMBRE (Validación del nombre)
             const nombreValor = inputNombre.value.trim();
             const regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,60}$/;
-            if (!regexNombre.test(nombreValor)) {
+            if (nombreValor !== "" && !regexNombre.test(nombreValor)) {
                 inputNombre.setCustomValidity("Nombre inválido");
+                inputNombre.nextElementSibling.innerText = "El nombre debe contener entre 3 y 60 caracteres (solo letras).";
                 formularioValido = false;
-            }// regexNombre
+            } else if (nombreValor === "") {
+                inputNombre.nextElementSibling.innerText = "Por favor ingresa el nombre completo.";
+            }
 
-            // TELÉFONO (Debe contener al menos 10 digitos.)
+            // TELÉFONO (Debe contener exactamente 10 dígitos)
+            const telefonoValor = inputTelefono.value.trim();
             const regexTelefono = /^\d{10}$/;
-            if (!regexTelefono.test(inputTelefono.value.trim())) {
+            if (telefonoValor !== "" && !regexTelefono.test(telefonoValor)) {
                 inputTelefono.setCustomValidity("Invalido");
+                inputTelefono.nextElementSibling.innerText = "El número telefónico debe contener exactamente 10 dígitos numéricos.";
                 formularioValido = false;
-            }// regexTelefono
+            } else if (telefonoValor === "") {
+                inputTelefono.nextElementSibling.innerText = "Ingresa un número telefónico válido, debe contener al menos 10 dígitos.";
+            }
 
-            // E-MAIL (Debe ingresar un e-mail valido.)
+            // E-MAIL (Debe ingresar un e-mail valido)
             const emailValor = inputEmail.value.trim();
             const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!regexEmail.test(emailValor)) {
+            if (emailValor !== "" && !regexEmail.test(emailValor)) {
                 inputEmail.setCustomValidity("Correo inválido");
+                inputEmail.nextElementSibling.innerText = "El formato del correo no es válido (ejemplo: usuario@dominio.com).";
                 formularioValido = false;
-            }// regexEmail
+            } else if (emailValor === "") {
+                inputEmail.nextElementSibling.innerText = "Ingresa un correo válido (Ejemplo: correo@dominio.com).";
+            }
 
-            // CONTRASEÑA (Debe contener al menos 8 caracteres.)
-            if (inputPassword.value.length < 8) {
+            // CONTRASEÑA (Debe contener al menos 8 caracteres)
+            const passwordValor = inputPassword.value;
+            if (passwordValor !== "" && passwordValor.length < 8) {
                 inputPassword.setCustomValidity("Corta");
                 formularioValido = false;
-            }// Contraseña
+            }
 
-            // CONFIRMAR CONTRASEÑA (Debe coincidir con CONTRASEÑA.)
-            if (inputPassword.value !== inputConfirmPassword.value) {
+            // CONFIRMAR CONTRASEÑA (Debe coincidir con CONTRASEÑA)
+            if (inputConfirmPassword.value !== "" && passwordValor !== inputConfirmPassword.value) {
                 inputConfirmPassword.setCustomValidity("No coincide");
                 formularioValido = false;
-            }// Confirmar contraseña.
+            }
 
+            // ==========================================
             // EVALUACIÓN FINAL
+            // ==========================================
             if (!formulario.checkValidity() || !formularioValido) {
                 formulario.classList.add("was-validated");
                 contenedorAlerta.innerHTML = `
@@ -81,14 +96,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 formulario.classList.remove("was-validated");
 
                 const usuario = {
-                    nombre: inputNombre.value.trim(),
-                    telefono: inputTelefono.value.trim(),
-                    email: inputEmail.value.trim(),
-                    password: inputPassword.value.trim()
+                    nombre: nombreValor,
+                    telefono: telefonoValor,
+                    email: emailValor,
+                    password: passwordValor.trim()
                 };
 
-                //Mostrar alerta de registro correcto
-                //TODO agregar alerta de que usuario no pudo registrarse cuando se implemente el backend
+                // Mostrar alerta de registro correcto con SweetAlert2
                 Swal.fire({
                     title: 'Usuario registrado',
                     text: 'Usuario registrado correctamente',
@@ -97,20 +111,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     customClass: {
                         confirmButton: 'swtalert-confirm-btn'
                     }
-                })
-            }// Evaluación final.
-        });// Función Flecha Submit.
+                });
+
+                // Opcional: limpiar el formulario tras registrar con éxito
+                // formulario.reset();
+            }
+        }); // Función Flecha Submit.
 
         formulario.addEventListener("reset", () => {
             formulario.classList.remove("was-validated");
             contenedorAlerta.innerHTML = "";
-        })// Función Flecha Reset
+        }); // Función Flecha Reset
 
-    }// if (Formulario)
+    } // if (Formulario)
 
-    inputTelefono.addEventListener("keypress", () => {
-        if (event.key === " " || isNaN(event.key))
-            event.preventDefault();
-    })
+    // Restricción en tiempo de ejecución para el input del teléfono (bloquear espacios y letras)
+    if (inputTelefono) {
+        inputTelefono.addEventListener("keypress", (event) => {
+            if (event.key === " " || isNaN(event.key)) {
+                event.preventDefault();
+            }
+        });
+    }
 
-});// Función flecha DOMContentLoaded.
+}); // Función flecha DOMContentLoaded.
