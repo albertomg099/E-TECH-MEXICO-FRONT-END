@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputConfirmPassword = document.getElementById("confirmPassword");
     const contenedorAlerta = document.getElementById("formAlerta");
 
+    
+
+
     if (formulario) {
 
         formulario.reset();
