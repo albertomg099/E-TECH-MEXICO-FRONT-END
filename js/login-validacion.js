@@ -5,6 +5,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputPassword = document.getElementById("password");
     const contenedorAlerta = document.getElementById("formAlerta");
 
+    const usuariosDePrueba = [
+        {
+            "nombre": "José Alberto",
+            "telefono": "8112345678",
+            "email": "alberto@gmail.com",
+            "password": "password123"
+        },
+        {
+            "nombre": "Josué Vásquez",
+            "telefono": "8119876543",
+            "email": "josue@gmail.com",
+            "password": "password456"
+        },
+        {
+            "nombre": "Nathaly Alvarez",
+            "telefono": "8115554433",
+            "email": "nathaly@gmail.com",
+            "password": "password789"
+        }
+    ];
+
+    console.log(JSON.stringify(usuariosDePrueba, null, 2));
+
     if (formulario) {
 
         formulario.reset();
@@ -58,16 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 formulario.classList.remove("was-validated");
 
-                const credencialesUsuario = {
-                    "email": emailValor,
-                    "password": passwordValor
-                };
-
-                console.log("¡JSON de credenciales creado con éxito por Alberto!");
-                console.log(JSON.stringify(credencialesUsuario, null, 2));
-                
                 // Simulación exitosa (Aquí se conectará con el Backend posteriormente)
-                // console.log("Datos listos para enviar:", { email: emailValor, password: passwordValor });
+                console.log("Datos listos para enviar:", { email: emailValor, password: passwordValor });
             }
         });
 
