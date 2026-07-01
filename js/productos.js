@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const productoCard = document.createElement("div");
         productoCard.classList.add("col");
         productoCard.innerHTML = `
-            <div class="card h-100 border-0 shadow-sm custom-card">
+            <div class="card h-100 border-0 shadow-sm product-card">
                 <div class="img-container">
                     <img src="${producto.image}" class="card-img-top p-3 rounded"
                         alt="${producto.title}">
