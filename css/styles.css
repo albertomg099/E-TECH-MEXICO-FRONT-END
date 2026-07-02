@@ -4,6 +4,7 @@
     --color-rosa-pastel: #D5A1AF;
     --color-rosa-ajolote: #E65C84;
     --color-blanco-puro: white;
+    --color-gris-claro: #F4F4F6;
 }
 
 body {
@@ -98,13 +99,17 @@ h5 {
     max-width: none;
 
     box-sizing: border-box;
-    background-image: url(../assets/images/laptop-dos.jpg);
+    background-image: url(../assets/images/laptop-dos-desenfocado.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
 }
 
-
+.h1--header-about {
+    background-color: var(--color-rosa-claro);
+    padding: 10px;
+    border-radius: 8px
+}
 
 .bg-pink-light {
     background-color: var(--color-rosa-claro);
@@ -162,17 +167,21 @@ footer h6 {
     object-fit: contain;
 }
 
-.custom-card {
+.product-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.custom-card:hover {
+.product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12) !important;
 }
 
+.card-formulario {
+    border-radius: 10px;
+}
+
 .custom-btn {
-    background-color: #0b1c3f;
+    background-color: var(--color-azul-oscuro);
     border: none;
 }
 
