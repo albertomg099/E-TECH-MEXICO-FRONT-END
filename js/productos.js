@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="mt-3">
                         <span class="d-block mb-2 fs-5 fw-bold text-dark">$${producto.price.toFixed(2)} MXN</span>
                         <a href="#"
-                            class="btn btn-dark w-100 rounded-pill fw-semibold shadow-sm custom-btn">Agregar al carrito</a>
+                            class="btn btn-dark w-100 rounded-pill fw-semibold shadow-sm btn-shopping-cart">Agregar al carrito</a>
                     </div>
                 </div>
             </div>
