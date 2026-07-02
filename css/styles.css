@@ -415,3 +415,13 @@ footer h6 {
     border-radius: 4px;
     /* border: none; */
 }
+
+.ajolote{
+    animation: ajoloteJump 3s ease-in-out infinite;
+}
+
+.ajolote{
+    animation: brincar 3s ease-in-out infinite;
+}
+
+
