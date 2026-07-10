@@ -45,7 +45,7 @@
 
                     <div class="col-12 col-lg-6 col-md-8 col-sm-10">
 
-                        <form id="loginForm" class="card p-4 shadow" autocomplete="off" novalidate>
+                        <form id="loginForm" class="card card-formulario p-4 shadow" autocomplete="off" novalidate>
 
                             <!-- Correo Electrónico -->
                             <div class="form-group mb-3 position-relative">
@@ -75,27 +75,34 @@
                                 </div>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-3 text-center">
                                 <a href="./recuperar-password.html" class="text-decoration-none fw-semibold"
                                     style="color: #303a49;">
                                     ¿Olvidaste tu contraseña?
                                 </a>
-                            </div>
 
+                            </div>
                             <div id="formAlerta" class="mb-3"></div>
 
                             <!-- Botones -->
-                            <div class="d-flex gap-2">
+                            <div class="d-flex gap-2 mb-3">
 
                                 <button type="reset" class="btn btn-outline-secondary w-50 fw-bold">
                                     Limpiar
                                 </button>
 
-                                <button type="submit" class="btn w-50 fw-bold"
-                                    style="background-color: #2d3e57; color: white;">
+                                <button type="submit" class="btn btn-primary w-50 fw-bold">
                                     Ingresar
                                 </button>
+                            </div>
 
+                            <div class="mb-3 text-center">
+                                <span>
+                                    ¿No tienes una cuenta? <br>
+                                    <a href="./registro-usuario.html" class="text-decoration-none fw-semibold" style="color: #303a49;">
+                                        ¡Registrate ahora!
+                                    </a>
+                                </span>
                             </div>
 
                         </form>
@@ -109,9 +116,7 @@
     </main>
 
     <footer>
-        <h6 class="text-center m-0 p-2">
-            © 2026 E-TECH MÉXICO - Todos los derechos reservados.
-        </h6>
+
     </footer>
 
     <script src="./js/main.js" type="module"></script>

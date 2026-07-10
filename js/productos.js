@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const productoCard = document.createElement("div");
         productoCard.classList.add("col");
         productoCard.innerHTML = `
-            <div class="card h-100 border-0 shadow-sm custom-card">
+            <div class="card h-100 border-0 shadow-sm product-card">
                 <div class="img-container">
                     <img src="${producto.image}" class="card-img-top p-3 rounded"
                         alt="${producto.title}">
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="mt-3">
                         <span class="d-block mb-2 fs-5 fw-bold text-dark">$${producto.price.toFixed(2)} MXN</span>
                         <a href="#"
-                            class="btn btn-dark w-100 rounded-pill fw-semibold shadow-sm custom-btn">Agregar al carrito</a>
+                            class="btn btn-dark w-100 rounded-pill fw-semibold shadow-sm btn-shopping-cart">Agregar al carrito</a>
                     </div>
                 </div>
             </div>
