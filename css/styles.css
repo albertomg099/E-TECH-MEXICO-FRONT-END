@@ -4,6 +4,11 @@
     --color-rosa-pastel: #D5A1AF;
     --color-rosa-ajolote: #E65C84;
     --color-blanco-puro: white;
+    --color-gris-claro: #F4F4F6;
+
+    --color-boton-primary: #2d3e57;
+    --color-boton-primary-hover: #444f62;
+    --color-boton-primary-active: #39588e;
 }
 
 body {
@@ -98,13 +103,17 @@ h5 {
     max-width: none;
 
     box-sizing: border-box;
-    background-image: url(../assets/images/laptop-dos.jpg);
+    background-image: url(../assets/images/laptop-dos-desenfocado.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
 }
 
-
+.h1--header-about {
+    background-color: var(--color-rosa-claro);
+    padding: 10px;
+    border-radius: 8px
+}
 
 .bg-pink-light {
     background-color: var(--color-rosa-claro);
@@ -162,17 +171,21 @@ footer h6 {
     object-fit: contain;
 }
 
-.custom-card {
+.product-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.custom-card:hover {
+.product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12) !important;
 }
 
-.custom-btn {
-    background-color: #0b1c3f;
+.card-formulario {
+    border-radius: 10px;
+}
+
+.btn-shopping-cart {
+    background-color: var(--color-azul-oscuro);
     border: none;
 }
 
@@ -302,6 +315,24 @@ footer h6 {
     font-size: 1.05rem;
 }
 
+.btn-primary {
+    --bs-btn-bg: var(--color-boton-primary);
+    --bs-btn-border-color: var(--color-boton-primary);
+    --bs-btn-hover-bg: var(--color-boton-primary-hover);
+    --bs-btn-hover-border-color: var(--color-boton-primary-hover);
+    --bs-btn-active-bg: var(--color-boton-primary-active);
+    --bs-btn-active-border-color: var(--color-boton-primary-active);
+}
+
+.btn-outline-primary {
+    --bs-btn-border-color: var(--color-boton-primary);
+    --bs-btn-hover-bg: var(--color-boton-primary-hover);
+    --bs-btn-hover-border-color: var(--color-boton-primary-hover);
+    --bs-btn-active-bg: var(--color-boton-primary-active);
+    --bs-btn-active-border-color: var(--color-boton-primary-active);
+    color: var(--color-boton-primary);
+}
+
 .btn-catalog-redirect {
     background-color: var(--color-azul-oscuro);
     color: #ffffff !important;
@@ -414,4 +445,12 @@ footer h6 {
     color: #ffffff !important;
     border-radius: 4px;
     /* border: none; */
+}
+
+.ajolote {
+    animation: ajoloteJump 3s ease-in-out infinite;
+}
+
+.ajolote {
+    animation: brincar 3s ease-in-out infinite;
 }

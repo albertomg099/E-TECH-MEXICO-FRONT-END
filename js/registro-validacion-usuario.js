@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // TELÉFONO (Debe contener exactamente 10 dígitos)
             const telefonoValor = inputTelefono.value.trim();
-            const regexTelefono = /^\d{10}$/;
+            const regexTelefono = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
             if (telefonoValor !== "" && !regexTelefono.test(telefonoValor)) {
                 inputTelefono.setCustomValidity("Invalido");
                 inputTelefono.nextElementSibling.innerText = "El número telefónico debe contener exactamente 10 dígitos numéricos.";
