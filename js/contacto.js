@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const inputTelefono = document.getElementById("inputTelefono");
         const inputTelefonoValue = inputTelefono.value.trim();
         const inputTelefonoFeedback = document.getElementById("invalidFeedbackTelefono");
-        const regexTelefono = /^[0-9]{10}$/;
+        const regexTelefono = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
 
         if (inputTelefonoValue.length === 0) {
             inputTelefono.setCustomValidity(feedbackMessageRequired)
