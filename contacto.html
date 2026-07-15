@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/assets/images/logo_e_tech_transparente.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Contacto - E-TECH MÉXICO</title>
+</head>
+
+<body>
+    <!-- Barra de Navegación -->
+    <nav>
+    </nav>
+
+    <!-- Contenido Principal: Formulario de Contacto -->
+    <main class="p-4">
+        <section id="contact" class="row justify-content-center contact-section">
+            <header class="text-center m-4">
+                <h2 class="section-title fw-bold" style="color: var(--color-azul-oscuro);">Establecer Comunicación
+                </h2>
+            </header>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-6 col-md-7 col-sm-10 seccion-redes">
+                        <!-- Formulario -->
+                        <form id="contactForm" class="contact-form card card-formulario p-4 shadow bg-opacity-50" novalidate>
+
+                            <div class="form-group mb-3">
+                                <label for="nombre" class="form-label fw-bold">Nombre Completo</label>
+                                <input type="text" id="inputNombre" class="form-control" placeholder="Ej. Kevin Salgado"
+                                    required>
+                                <div id="invalidFeedbackNombre" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="correo" class="form-label fw-bold">Correo Electrónico</label>
+                                <input id="inputCorreo" class="form-control" placeholder="correo@dominio.com" required>
+                                <div id="invalidFeedbackCorreo" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="telefono" class="form-label fw-bold">Teléfono (10 dígitos)</label>
+                                <input type="tel" id="inputTelefono" class="form-control" placeholder="5512345678"
+                                    required>
+                                <div id="invalidFeedbackTelefono" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="mensaje" class="form-label fw-bold">Mensaje</label>
+                                <textarea id="mensaje" class="form-control" rows="5"
+                                    placeholder="Escribe tu consulta aquí..." required></textarea>
+                                <div id="invalidFeedbackTelefono" class="invalid-feedback">Campo obligatorio</div>
+                            </div>
+
+                            <!-- Contenedor para la alerta -->
+                            <div id="formAlert" class="alert-message mb-3"></div>
+
+                            <button type="submit" class="btn btn-primary w-100 fw-bold">Enviar
+                                Mensaje</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="./js/contacto.js"></script>
+</body>
+
+</html>
