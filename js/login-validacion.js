@@ -1,4 +1,11 @@
+import { API_BASE_URL } from './constants.js';
+
 document.addEventListener("DOMContentLoaded", () => {
+
+    if (localStorage.getItem('token')) {
+        window.location.href = 'index.html';
+        return;
+    }
 
     const formulario = document.getElementById("loginForm");
     const inputEmail = document.getElementById("email");
@@ -31,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         formulario.reset();
 
-        formulario.addEventListener("submit", (event) => {
+        formulario.addEventListener("submit", async(event) => {
 
             event.preventDefault();
             event.stopPropagation();
@@ -58,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // 2. VALIDACIÓN DE CONTRASEÑA
-            const passwordValor = inputPassword.value;
+            const passwordValor = inputPassword.value.trim();
 
             if (passwordValor === "") {
                 inputPassword.setCustomValidity("Obligatorio");
@@ -80,46 +87,66 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 formulario.classList.remove("was-validated");
 
-                //Encontrar usuario
-                let usuarioLogin = undefined;
-                usuariosDePrueba.forEach((usuario) => {
-                    if (emailValor === usuario.email)
-                        usuarioLogin = usuario;
-                });
+                const loginRequest = {
+                    email: emailValor,
+                    password: passwordValor,
+                }
 
-                //Validar usuario
-                if (!usuarioLogin) {
-                    Swal.fire({
-                        title: 'Error de inicio sesión',
-                        text: 'Correo electrónico incorrecto',
-                        icon: 'error',
-                        confirmButtonText: 'Ok',
-                        customClass: {
-                            confirmButton: 'swtalert-confirm-btn'
-                        }
+                try {
+                    const response = await fetch(`${API_BASE_URL}/login/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(loginRequest)
                     });
-                } else {
-                    //Validar contraseña
-                    if (passwordValor === usuarioLogin.password) {
-                        window.location.replace("/");
-                    } else {
+
+                    if (!response.ok) {
                         Swal.fire({
-                            title: 'Error de inicio sesión',
-                            text: 'Contraseña incorrecta',
+                            title: 'Error de inicio de sesión',
+                            text: 'El correo o la contraseña no son válidos.',
                             icon: 'error',
                             confirmButtonText: 'Ok',
                             customClass: {
                                 confirmButton: 'swtalert-confirm-btn'
                             }
                         });
+                        return;
                     }
 
+                    const data = await response.json(); // TokenAcceso: { token: "..." }
+
+                    if (!data.token) {
+                        Swal.fire({
+                            title: 'Error de inicio de sesión',
+                            text: 'No se recibió un token válido. Intenta de nuevo.',
+                            icon: 'error',
+                            confirmButtonText: 'Ok',
+                            customClass: {
+                                confirmButton: 'swtalert-confirm-btn'
+                            }
+                        });
+                        return;
+                    }
+
+                    localStorage.setItem('token', data.token);
+                    window.location.href = 'index.html';
+
+                } catch (error) {
+                    console.error(error);
+                    Swal.fire({
+                        title: 'Error de inicio de sesión',
+                        text: 'No se puede conectar con el servidor, por favor, intenta mas tarde.',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                        customClass: {
+                            confirmButton: 'swtalert-confirm-btn'
+                        }
+                    });
                 }
 
-
-
-
-
+                localStorage.setItem('token', data.token);
+                window.location.href = 'index.html';
             }
         });
 
@@ -127,6 +154,5 @@ document.addEventListener("DOMContentLoaded", () => {
             formulario.classList.remove("was-validated");
             contenedorAlerta.innerHTML = "";
         });
-
     }
 });

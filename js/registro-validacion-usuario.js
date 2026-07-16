@@ -1,4 +1,11 @@
+import { API_BASE_URL } from './constants.js';
+
 document.addEventListener("DOMContentLoaded", () => {
+
+    if (localStorage.getItem('token')) {
+        window.location.href = 'index.html';
+        return;
+    }
 
     // Selección del formulario.
     const formulario = document.getElementById("usuarioForm");
@@ -15,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         formulario.reset();
 
-        formulario.addEventListener("submit", (event) => {
+        formulario.addEventListener("submit", async(event) => {
 
             // Detener el envío automático para realizar la lógica de validación.
             event.preventDefault();
@@ -71,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // CONTRASEÑA (Debe contener al menos 8 caracteres)
-            const passwordValor = inputPassword.value;
+            const passwordValor = inputPassword.value.trim();
             if (passwordValor !== "" && passwordValor.length < 8) {
                 inputPassword.setCustomValidity("Corta");
                 formularioValido = false;
@@ -95,23 +102,66 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 formulario.classList.remove("was-validated");
 
-                const usuario = {
-                    nombre: nombreValor,
+                const usuarioRequest = {
+                    nombreCompleto: nombreValor,
                     telefono: telefonoValor,
-                    email: emailValor,
-                    password: passwordValor.trim()
+                    correoElectronico: emailValor,
+                    password: passwordValor,
+                    direccionEntrega: ""
                 };
 
-                // Mostrar alerta de registro correcto con SweetAlert2
-                Swal.fire({
-                    title: 'Usuario registrado',
-                    text: 'Usuario registrado correctamente',
-                    icon: 'success',
-                    confirmButtonText: 'Ok',
-                    customClass: {
-                        confirmButton: 'swtalert-confirm-btn'
+                try {
+                    const response = await fetch(`${API_BASE_URL}/usuarios/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(usuarioRequest)
+                    });
+
+                    if (!response.ok) {
+                        Swal.fire({
+                            title: 'Error de registro',
+                            text: 'Verifica que los datos estén correctos',
+                            icon: 'error',
+                            confirmButtonText: 'Ok',
+                            customClass: {
+                                confirmButton: 'swtalert-confirm-btn'
+                            }
+                        });
+                        console.log(response.body);
+                        return;
                     }
-                });
+
+                    // Mostrar alerta de registro correcto con SweetAlert2
+                    Swal.fire({
+                        title: 'Usuario registrado',
+                        text: 'Usuario registrado correctamente. Ahora puedes iniciar sesión.',
+                        icon: 'success',
+                        confirmButtonText: 'Ok',
+                        customClass: {
+                            confirmButton: 'swtalert-confirm-btn'
+                        }
+                    }).then(result => {
+                        if (result.isConfirmed) {
+                            window.location.href = 'login-usuario.html';
+                        }
+                    });
+
+                } catch (error) {
+                    console.error(error);
+                    Swal.fire({
+                        title: 'Error de registro',
+                        text: 'No se puede conectar con el servidor, por favor, intenta mas tarde.',
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                        customClass: {
+                            confirmButton: 'swtalert-confirm-btn'
+                        }
+                    });
+                }
+
+                
 
                 // Opcional: limpiar el formulario tras registrar con éxito
                 // formulario.reset();

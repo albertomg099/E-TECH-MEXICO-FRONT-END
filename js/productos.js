@@ -1,3 +1,5 @@
+import { API_BASE_URL } from './constants.js';
+
 const productosMock = [
     {
         id: 1,
@@ -100,29 +102,23 @@ const productosMock = [
     }
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
+function renderProductos(productos) {
     const productosContainer = document.getElementById("productos-container");
 
-    // Leer productos guardados desde localStorage
-    const productosGuardados = JSON.parse(localStorage.getItem('etech_productos') || '[]');
-
-    // Combinar: primero los del mock, luego los nuevos
-    const todosLosProductos = [...productosMock, ...productosGuardados];
-
-    todosLosProductos.forEach(producto => {
+    productos.forEach(producto => {
         const productoCard = document.createElement("div");
         productoCard.classList.add("col");
         productoCard.innerHTML = `
             <div class="card h-100 border-0 shadow-sm product-card">
                 <div class="img-container">
-                    <img src="${producto.image}" class="card-img-top p-3 rounded"
-                        alt="${producto.title}">
+                    <img src="${producto.urlImagen}" class="card-img-top p-3 rounded"
+                        alt="${producto.nombre}">
                 </div>
                 <div class="card-body d-flex flex-column text-center">
-                    <h5 class="card-title fw-bold text-dark mb-2">${producto.title}</h5>
-                    <p class="card-text text-muted small flex-grow-1">${producto.description}</p>
+                    <h5 class="card-title fw-bold text-dark mb-2">${producto.nombre}</h5>
+                    <p class="card-text text-muted small flex-grow-1">${producto.descripcion}</p>
                     <div class="mt-3">
-                        <span class="d-block mb-2 fs-5 fw-bold text-dark">$${producto.price.toFixed(2)} MXN</span>
+                        <span class="d-block mb-2 fs-5 fw-bold text-dark">$${producto.precio.toFixed(2)} MXN</span>
                         <a href="#"
                             class="btn btn-dark w-100 rounded-pill fw-semibold shadow-sm btn-shopping-cart">Agregar al carrito</a>
                     </div>
@@ -131,5 +127,23 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         productosContainer.appendChild(productoCard);
     });
-});
+}
 
+async function fetchProductos(){
+    try {
+        const response = await fetch(`${API_BASE_URL}/productos/`);
+        if (!response.ok) throw new Error('Error al obtener productos');
+
+        const productos = await response.json();
+        renderProductos(productos);
+
+    } catch (error) {
+        const productosContainer = document.getElementById("productos-container");
+        console.error(error);
+        productosContainer.innerHTML = `<tr><td colspan="5" class="text-danger">No se pudieron cargar los productos.</td></tr>`;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", async() => {
+    fetchProductos();
+});
